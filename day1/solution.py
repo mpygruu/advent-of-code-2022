@@ -28,9 +28,16 @@ def part1_solution():
     return max(elves_calories)
 
 
+def part2_solution():
+    calories_list = get_calories_from_file()
+    elves_calories = calories_per_elf(calories_list)
+    elves_calories.sort(reverse=True)
+    return sum(elves_calories[0:3])
+
+
 def main():
-    max_elf_calories = part1_solution()
-    print(max_elf_calories)
+    print("Part 1 answer:", part1_solution())
+    print("Part 2 answer:", part2_solution())
 
 
 main()
