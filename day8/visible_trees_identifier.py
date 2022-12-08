@@ -1,6 +1,7 @@
 # returns the same grid, with 1 for visible and 0 for invisible
 def identify_visible_trees(tree_heights: list[list[int]]) -> list[list[int]]:
     from visibility_grid_preparer import prepare_visibility_grid
+    from visibility_checker import visible_from_bottom, visible_from_left, visible_from_right, visible_from_top
 
     visibility_grid = prepare_visibility_grid(tree_heights)
 
@@ -19,36 +20,3 @@ def identify_visible_trees(tree_heights: list[list[int]]) -> list[list[int]]:
                 
         
     return visibility_grid
-
-
-
-def visible_from_left(row: list[int], index: int) -> bool:
-    for i in range(index):
-        if row[i] >= row[index]:
-            return False
-    
-    return True
-
-
-def visible_from_right(row: list[int], index: int) -> bool:
-    for i in range(index+1, len(row)):
-        if row[i] >= row[index]:
-            return False
-    
-    return True
-
-
-def visible_from_top(column: list[int], index: int) -> bool:
-    for i in range(index):
-        if column[i] >= column[index]:
-            return False
-    
-    return True
-
-
-def visible_from_bottom(column: list[int], index: int) -> bool:
-    for i in range(index+1, len(column)):
-        if column[i] >= column[index]:
-            return False
-    
-    return True
